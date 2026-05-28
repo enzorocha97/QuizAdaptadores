@@ -8,18 +8,36 @@
     android:background="#E3F2FD"
     tools:context=".MainActivity">
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgMiniatura"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerCrop"
+        android:padding="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/CircleImage"
+        app:strokeColor="#000000"
+        app:strokeWidth="1dp"
+        android:contentDescription="Miniatura" />
+
     <TextView
         android:id="@+id/txtTitulo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="JUGADORES DEL MUNDO"
-        android:textColor="#1A237E"
-        android:textSize="28sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="serif"
+        android:text="Jugadores del Mundo"
+        android:textColor="#000000"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imgMiniatura"
+        app:layout_constraintEnd_toStartOf="@+id/imgMiniatura"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imgMiniatura" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvJugadores"
@@ -29,6 +47,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtTitulo" />
+        app:layout_constraintTop_toBottomOf="@id/imgMiniatura" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

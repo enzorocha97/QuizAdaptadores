@@ -1,6 +1,7 @@
 package com.example.quizadaptadores;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quizadaptadores.Clases.Jugador;
 import com.example.quizadaptadores.adaptadores.JugadorAdaptador;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView rcvJugadores;
+    ImageView imgMiniatura;
     List<Jugador> listJugadores = new ArrayList<>();
 
     @Override
@@ -27,10 +30,22 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
         rcvJugadores = findViewById(R.id.rcvJugadores);
+        imgMiniatura = findViewById(R.id.imgMiniatura);
+
+        // Cargar miniatura superior derecha
+        Picasso.get()
+                .load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnnxtBPFrABWNr0k9B_A99YSxW8gTfjKhnYg&s")
+                .into(imgMiniatura);
 
         Jugador jug1 = new Jugador("https://estaticos.elcolombiano.com/binrepository/848x565/34c0/780d565/none/11101/XGEE/junior-and-teo_47888257_20250517175248.jpg", "Teofilo Gutierrez", "39", "Junior de Barranquilla", "Delantero");
-        Jugador jug2 = new Jugador("https://wallpapers4screen.com/Uploads/6-8-2025/85363/thumb2-luis-diaz-4k-red-neon-lights-bayern-munich-bundesliga.jpg", "Luis Diaz", "27", "Bayern de Munich", "Extremo");
+        Jugador jug2 = new Jugador("https://wallpapers4screen.com/Uploads/6-8-2025/85363/thumb2-luis-diaz-4k-red-neon-lights-bayern-munich-bundesliga.jpg", "Luis Diaz", "27", "Liverpool FC", "Extremo");
         Jugador jug3 = new Jugador("https://images2.minutemediacdn.com/image/upload/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/shape%2Fcover%2Fsport%2FFILES----Picture-taken-15-October-2003-cc0f6baf7991de255cdd8cfaa7fdf377.jpg", "Ronaldinho", "44", "Retirado", "Mediocampista");
         Jugador jug4 = new Jugador("https://imagenes.noticiasrcn.com/ImgDeportesRCN/junior-sonrie-por-la-exitosa-operacion-de-jermein-pena.webp?w=960", "Jermein Zidane Peña", "25", "Junior de Barranquilla", "Defensa");
         Jugador jug5 = new Jugador("https://wallpapers4screen.com/Uploads/14-2-2025/66875/thumb2-4k-michael-olise-red-abstract-background-bayern-munich-fc-bundesliga.jpg", "Michael Olise", "22", "Bayern Munich", "Extremo");
